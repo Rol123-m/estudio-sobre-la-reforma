@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>La Verdad que Nos Hace Libres — Estudio para el Día de la Reforma</title>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700;800;900&family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #f3f1ec;
+      font-family: 'Montserrat', sans-serif;
+      color: #2b241f;
+      line-height: 1.75;
+    }
+    :root {
+      --accent: #8b3a2b;
+      --accent-dark: #6a281c;
+      --accent-light: #f0e4e0;
+      --muted: #5e4b3a;
+      --card: #ffffff;
+      --shadow: 0 25px 40px -15px rgba(0,0,0,0.08);
+      --radius: 1.2rem;
+    }
+    .container { max-width: 1280px; margin: 0 auto; padding: 1.5rem; }
+    .church-header { text-align: center; padding: 2rem 0 1rem; border-bottom: 3px solid var(--accent); margin-bottom: 2rem; }
+    .church-name { font-family: 'Merriweather', serif; font-size: 2.2rem; color: var(--accent); font-weight: 800; }
+    .church-motto { color: var(--muted); font-weight: 500; letter-spacing: 1px; }
+    .hero {
+      display: grid; grid-template-columns: 1fr; gap: 2rem;
+      background: linear-gradient(135deg, #faf3f0, #f0e4e0);
+      border-radius: var(--radius); padding: 2.5rem; margin-bottom: 2.5rem;
+      box-shadow: var(--shadow); border: 1px solid rgba(139,58,43,0.15);
+    }
+    @media (min-width: 800px) { .hero { grid-template-columns: 1.3fr 1fr; } }
+    .hero-content h1 { font-family: 'Merriweather', serif; font-size: 2.8rem; font-weight: 800; color: #3a281c; line-height: 1.2; margin-bottom: 1rem; }
+    .hero-content h1 .highlight { color: var(--accent); }
+    .eyebrow { background: var(--accent-light); color: var(--accent-dark); display: inline-block; padding: 0.3rem 1.2rem; border-radius: 2rem; font-weight: 700; font-size: 0.8rem; letter-spacing: 1.5px; margin-bottom: 1rem; }
+    .lead { font-size: 1.2rem; color: var(--muted); margin-bottom: 1.5rem; }
+    .hero-image-placeholder { background: linear-gradient(135deg, var(--accent), #b05a47); border-radius: 1rem; min-height: 280px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; color: white; padding: 2rem; box-shadow: var(--shadow); }
+    .hero-image-placeholder i { font-size: 4rem; margin-bottom: 1rem; }
+    .stats-box { display: flex; justify-content: space-around; background: white; border-radius: 2rem; padding: 1.5rem; margin-bottom: 2rem; flex-wrap: wrap; gap: 1rem; box-shadow: 0 8px 20px rgba(0,0,0,0.05); }
+    .stat-number { font-family: 'Merriweather', serif; font-size: 2.3rem; font-weight: 800; color: var(--accent); }
+    .stat-item { text-align: center; padding: 0.2rem 0.8rem; }
+    .magazine-layout { display: grid; grid-template-columns: 1fr; gap: 2rem; }
+    @media (min-width: 960px) { .magazine-layout { grid-template-columns: 2fr 1fr; } }
+    .card { background: var(--card); border-radius: var(--radius); padding: 2rem; margin-bottom: 2rem; box-shadow: 0 12px 30px rgba(0,0,0,0.05); border-left: 6px solid var(--accent); transition: 0.2s; }
+    .card-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; border-bottom: 2px solid #ece0d8; padding-bottom: 0.8rem; }
+    .card-number { background: var(--accent); color: white; width: 2.8rem; height: 2.8rem; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.3rem; }
+    .card-title { font-family: 'Merriweather', serif; font-size: 1.9rem; color: #2b241f; }
+    .quote { border-left: 5px solid var(--accent); background: var(--accent-light); padding: 1.5rem 2rem; margin: 1.8rem 0; border-radius: 0 20px 20px 0; font-style: italic; }
+    .quote-text { font-family: 'Merriweather', serif; font-size: 1.2rem; color: #6a281c; font-weight: 500; }
+    .quote-text .emphasis { color: var(--accent-dark); font-weight: 800; }
+    .interactive { background: #f7ece8; border-radius: 1rem; padding: 1.2rem; margin: 1.8rem 0; cursor: pointer; transition: 0.2s; text-align: center; border: 1px solid #dccfc6; font-weight: 500; }
+    .interactive:hover { background: #f0e4e0; transform: translateY(-3px); }
+    .sidebar-card { background: var(--card); border-radius: 1rem; padding: 1.8rem; margin-bottom: 2rem; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+    .tag { background: var(--accent-light); color: var(--accent-dark); padding: 0.4rem 1rem; border-radius: 2rem; font-size: 0.75rem; font-weight: 700; display: inline-block; margin: 0.2rem; }
+    .footer { text-align: center; border-top: 2px solid #dccfc6; padding: 2rem; margin-top: 2rem; color: var(--muted); }
+    @media (max-width: 700px) { .hero-content h1 { font-size: 2rem; } .card-title { font-size: 1.5rem; } }
+    .fade-in { animation: fadeUp 0.6s ease forwards; }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(25px); } to { opacity: 1; transform: translateY(0); } }
+    .callout { background: #faf0e8; border-radius: 0.8rem; padding: 1.2rem; margin: 1.2rem 0; border-left: 4px solid var(--accent-dark); }
+    .callout strong { color: var(--accent-dark); }
+    .sola-card { background: #faf6f0; border-radius: 1rem; padding: 1.5rem; margin: 1.5rem 0; border-left: 4px solid var(--accent-dark); }
+    .sola-card h4 { font-family: 'Merriweather', serif; color: var(--accent-dark); margin-bottom: 0.5rem; }
+    .questions-list { background: #fdf5f0; border-radius: 0.8rem; padding: 1rem 1.5rem; margin: 1rem 0; border-left: 4px solid #b33; }
+    .questions-list h5 { color: #8b2a1a; font-family: 'Merriweather', serif; margin-bottom: 0.5rem; }
+    .questions-list ol { margin-left: 1.2rem; }
+    .reform-grid { display: grid; grid-template-columns: 1fr; gap: 0.8rem; margin: 1rem 0; }
+    @media (min-width: 600px) { .reform-grid { grid-template-columns: 1fr 1fr; } }
+    .reform-item { background: #f7ece8; padding: 0.8rem 1rem; border-radius: 0.8rem; border-left: 3px solid var(--accent); }
+  </style>
+</head>
+<body>
+<div class="container">
+  <header class="church-header">
+    <div class="church-name">Iglesia Bautista de Sola</div>
+    <div class="church-motto">Solo Cristo Salva</div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <div class="eyebrow">Estudio Bíblico — Día de la Reforma</div>
+      <h1>La Verdad que <span class="highlight">Nos Hace Libres</span></h1>
+      <p class="lead">Un retorno a las cinco solas de la Reforma: Solo la Escritura, Solo Cristo, Solo por Gracia, Solo por Fe, Solo a Dios la Gloria. La Reforma no fue un evento del siglo XVI; fue un retorno a la Palabra de Dios, y ese retorno debe ser continuo.</p>
+      <div class="interactive" onclick="document.getElementById('intro').scrollIntoView({behavior:'smooth'})"><i class="fas fa-scroll"></i> Comenzar: ¿Qué llevó a la Reforma? →</div>
+    </div>
+    <div class="hero-image-placeholder">
+      <i class="fas fa-bible"></i>
+      <h3 style="font-size:1.5rem; margin-bottom:0.5rem;">"Conoceréis la verdad, y la verdad os hará libres"</h3>
+      <p style="opacity:0.9;">Juan 8:31-32 — Texto base</p>
+    </div>
+  </section>
+
+  <div class="stats-box">
+    <div class="stat-item"><div class="stat-number">5</div><div>Solas de la Reforma</div></div>
+    <div class="stat-item"><div class="stat-number">1517</div><div>95 Tesis — 31 de octubre</div></div>
+    <div class="stat-item"><div class="stat-number">5</div><div>Problemas que llevaron a la Reforma</div></div>
+    <div class="stat-item"><div class="stat-number">1</div><div>Autoridad final: la Escritura</div></div>
+  </div>
+
+  <div class="magazine-layout">
+    <main>
+      <!-- INTRODUCCIÓN -->
+      <div class="card fade-in" id="intro">
+        <div class="card-header"><div class="card-number">1</div><h2 class="card-title">Introducción: ¿Qué llevó a la Reforma?</h2></div>
+        <div class="card-content">
+          <p>El 31 de octubre de 1517, Martín Lutero clavó sus 95 Tesis en la puerta de la iglesia del castillo de Wittenberg. No fue un acto de rebeldía impulsiva, sino la culminación de años de conflicto interno y de una profunda crisis espiritual.</p>
+          <p><strong>Los problemas principales que llevaron a la Reforma fueron:</strong></p>
+          <div class="reform-grid">
+            <div class="reform-item"><strong>1. La venta de indulgencias.</strong> La Iglesia vendía el perdón de pecados —incluso para los muertos en el purgatorio— a cambio de dinero. El famoso fraile Johann Tetzel predicaba: "Tan pronto como la moneda suena en el cofre, el alma sale del purgatorio". Esto convertía la gracia de Dios en un producto comercial.</div>
+            <div class="reform-item"><strong>2. La autoridad de la tradición sobre la Escritura.</strong> La Iglesia enseñaba que la tradición, los concilios y el papa tenían autoridad igual o superior a la Biblia. La Palabra de Dios había sido desplazada por decretos humanos.</div>
+            <div class="reform-item"><strong>3. La salvación por obras.</strong> Se enseñaba que la salvación dependía de la cooperación humana: méritos, penitencias, peregrinaciones, donaciones. Cristo ya no era suficiente; había que añadir algo.</div>
+            <div class="reform-item"><strong>4. La corrupción del sacerdocio y del papado.</strong> Muchos líderes eclesiásticos vivían en lujo, inmoralidad y ambición política. El papado se había convertido en un poder terrenal más que en un pastor espiritual.</div>
+            <div class="reform-item" style="grid-column: 1 / -1;"><strong>5. La ignorancia de las Escrituras.</strong> La Biblia no estaba disponible en los idiomas del pueblo. La mayoría de los cristianos dependían completamente de lo que el clero les decía, sin poder verificar si era verdad.</div>
+          </div>
+          <div class="quote">
+            <div class="quote-text">"Dijo entonces Jesús a los judíos que habían creído en él: Si vosotros permaneciereis en mi palabra, seréis verdaderamente mis discípulos; y conoceréis la verdad, y la verdad os hará libres."<br><span style="font-size:0.9rem; font-style:normal;">— Juan 8:31-32</span></div>
+          </div>
+          <div class="questions-list">
+            <h5><i class="fas fa-question-circle"></i> Pregunta para debate</h5>
+            <p>Si tú hubieras vivido en el siglo XVI, ¿habrías notado que algo estaba mal? ¿Qué señales habrías identificado?</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- SOLA SCRIPTURA -->
+      <div class="card fade-in">
+        <div class="card-header"><div class="card-number">2</div><h2 class="card-title">I. Sola Scriptura: Solo la Escritura</h2></div>
+        <div class="card-content">
+          <div class="quote">
+            <div class="quote-text">"Toda la Escritura es inspirada por Dios, y útil para enseñar, para redargüir, para corregir, para instruir en justicia, a fin de que el hombre de Dios sea perfecto, enteramente preparado para toda buena obra."<br><span style="font-size:0.9rem; font-style:normal;">— 2 Timoteo 3:16-17</span></div>
+          </div>
+          <div class="sola-card">
+            <h4><i class="fas fa-book-bible"></i> Punto de Enseñanza</h4>
+            <p>La Biblia es la autoridad final en materia de fe y práctica. No la tradición humana, no los concilios, no el papa — <strong>solo la Palabra de Dios tiene la última palabra.</strong> La Escritura es suficiente para conocer a Dios, para la salvación y para la vida cristiana.</p>
+          </div>
+          <div class="sola-card" style="border-left-color: #8b3a2b;">
+            <h4><i class="fas fa-history"></i> Contexto de la Reforma</h4>
+            <p>Lutero tradujo la Biblia al alemán para que el pueblo pudiera leerla. Declaró en Worms: <strong>"Mi conciencia es prisionera de la Palabra de Dios... No puedo ni quiero retractarme"</strong>.</p>
+          </div>
+          <div class="callout">
+            <p><strong>Aplicación:</strong> Si la Escritura es suficiente, entonces debemos leerla, estudiarla y obedecerla. No necesitamos añadidos humanos para conocer la voluntad de Dios.</p>
+          </div>
+          <div class="questions-list">
+            <h5><i class="fas fa-question-circle"></i> Preguntas para debate</h5>
+            <ol>
+              <li>Si la Escritura es la autoridad final, ¿por qué tantos cristianos hoy conocen más las opiniones de sus líderes o de los medios que la Biblia misma?</li>
+              <li>¿Qué tradiciones o enseñanzas humanas hemos aceptado sin examinarlas a la luz de la Escritura?</li>
+              <li>¿Qué harías si tu pastor enseñara algo que contradice claramente la Biblia?</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+
+      <!-- SOLUS CHRISTUS -->
+      <div class="card fade-in">
+        <div class="card-header"><div class="card-number">3</div><h2 class="card-title">II. Solus Christus: Solo Cristo</h2></div>
+        <div class="card-content">
+          <div class="quote">
+            <div class="quote-text">"Y en ningún otro hay salvación; porque no hay otro nombre bajo el cielo, dado a los hombres, en que podamos ser salvos."<br><span style="font-size:0.9rem; font-style:normal;">— Hechos 4:12</span></div>
+          </div>
+          <div class="sola-card">
+            <h4><i class="fas fa-cross"></i> Punto de Enseñanza</h4>
+            <p>La salvación se encuentra exclusivamente en Cristo. No en santos, no en María, no en méritos humanos, no en rituales eclesiásticos. <strong>Cristo es el único mediador entre Dios y los hombres</strong> (1 Timoteo 2:5). Su obra es completa y suficiente.</p>
+          </div>
+          <div class="sola-card" style="border-left-color: #8b3a2b;">
+            <h4><i class="fas fa-history"></i> Contexto de la Reforma</h4>
+            <p>Los reformadores rechazaron la idea de que los santos o la iglesia pudieran mediar la salvación. <strong>Cristo es Profeta, Sacerdote y Rey — y solo Él salva.</strong> La misa dejó de ser un sacrificio repetido para convertirse en un memorial de la obra única de Cristo.</p>
+          </div>
+          <div class="callout">
+            <p><strong>Aplicación:</strong> Nuestra confianza no está en ningún ser humano, sino solo en Cristo y su obra completa.</p>
+          </div>
+          <div class="questions-list">
+            <h5><i class="fas fa-question-circle"></i> Preguntas para debate</h5>
+            <ol>
+              <li>¿En qué cosas prácticas ponemos nuestra confianza para agradar a Dios, además de Cristo?</li>
+              <li>¿Cómo explicarías a alguien por qué no necesitamos intermediarios humanos para acercarnos a Dios?</li>
+              <li>¿Qué diferencia hay entre admirar a un líder cristiano y confiar en él como mediador?</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+
+      <!-- SOLA GRATIA -->
+      <div class="card fade-in">
+        <div class="card-header"><div class="card-number">4</div><h2 class="card-title">III. Sola Gratia: Solo por Gracia</h2></div>
+        <div class="card-content">
+          <div class="quote">
+            <div class="quote-text">"Porque por gracia sois salvos por medio de la fe; y esto no de vosotros, pues es don de Dios; no por obras, para que nadie se gloríe."<br><span style="font-size:0.9rem; font-style:normal;">— Efesios 2:8-9</span></div>
+          </div>
+          <div class="sola-card">
+            <h4><i class="fas fa-gift"></i> Punto de Enseñanza</h4>
+            <p>La salvación es un don inmerecido de Dios. <strong>No podemos ganarla, merecerla ni contribuir a ella. Es pura gracia.</strong> Si hubiera algo que pudiéramos añadir, ya no sería gracia (Romanos 11:6).</p>
+          </div>
+          <div class="sola-card" style="border-left-color: #8b3a2b;">
+            <h4><i class="fas fa-history"></i> Contexto de la Reforma</h4>
+            <p>Lutero luchó durante años con la culpa y el temor. Cuando comprendió que la justicia de Dios es un regalo recibido por fe, no un logro humano, su vida cambió radicalmente. Escribió: <strong>"La gracia es el favor inmerecido de Dios, y el pecado más grande es no confiar en ella"</strong>.</p>
+          </div>
+          <div class="callout">
+            <p><strong>Aplicación:</strong> Si la salvación es por gracia, entonces no hay lugar para el orgullo. Todo es de Dios.</p>
+          </div>
+          <div class="questions-list">
+            <h5><i class="fas fa-question-circle"></i> Preguntas para debate</h5>
+            <ol>
+              <li>¿Por qué nos cuesta tanto aceptar que no podemos contribuir a nuestra salvación?</li>
+              <li>Si la salvación es por gracia, ¿cómo debería esto cambiar nuestra forma de tratar a los demás pecadores?</li>
+              <li>¿Qué diferencia práctica hay entre vivir por gracia y vivir por méritos?</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+
+      <!-- SOLA FIDE -->
+      <div class="card fade-in">
+        <div class="card-header"><div class="card-number">5</div><h2 class="card-title">IV. Sola Fide: Solo por Fe</h2></div>
+        <div class="card-content">
+          <div class="quote">
+            <div class="quote-text">"Concluimos, pues, que el hombre es justificado por fe sin las obras de la ley."<br><span style="font-size:0.9rem; font-style:normal;">— Romanos 3:28</span></div>
+          </div>
+          <div class="sola-card">
+            <h4><i class="fas fa-hands-praying"></i> Punto de Enseñanza</h4>
+            <p>La justificación — ser declarado justo ante Dios — se recibe <strong>solo por fe en Cristo</strong>. No por obras, no por penitencias, no por indulgencias. La fe verdadera descansa completamente en Cristo, no en nuestro desempeño.</p>
+          </div>
+          <div class="sola-card" style="border-left-color: #8b3a2b;">
+            <h4><i class="fas fa-history"></i> Contexto de la Reforma</h4>
+            <p>Este fue el corazón de la disputa con Roma. Lutero enseñó que la justicia de Cristo es <strong>imputada</strong> al creyente, no infundida por méritos propios. La famosa fórmula: <strong>"Simul iustus et peccator"</strong> — simultáneamente justo y pecador.</p>
+          </div>
+          <div class="callout">
+            <p><strong>Aplicación:</strong> Vivimos por fe, no por vista. Nuestra seguridad no está en lo que hacemos, sino en lo que Cristo hizo por nosotros.</p>
+          </div>
+          <div class="questions-list">
+            <h5><i class="fas fa-question-circle"></i> Preguntas para debate</h5>
+            <ol>
+              <li>¿Cómo se manifiesta el "justificarse a sí mismo" en la vida cotidiana del creyente?</li>
+              <li>¿Qué señales indican que alguien está confiando en sus obras en lugar de en Cristo?</li>
+              <li>¿Cómo se relaciona la fe con las obras? ¿Se contradicen Santiago y Pablo?</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+
+      <!-- SOLI DEO GLORIA -->
+      <div class="card fade-in">
+        <div class="card-header"><div class="card-number">6</div><h2 class="card-title">V. Soli Deo Gloria: Solo a Dios la Gloria</h2></div>
+        <div class="card-content">
+          <div class="quote">
+            <div class="quote-text">"Si, pues, coméis o bebéis, o hacéis otra cosa, hacedlo todo para la gloria de Dios."<br><span style="font-size:0.9rem; font-style:normal;">— 1 Corintios 10:31</span></div>
+          </div>
+          <div class="sola-card">
+            <h4><i class="fas fa-crown"></i> Punto de Enseñanza</h4>
+            <p>El propósito último de la salvación y de toda la vida cristiana es <strong>glorificar a Dios</strong>. No buscamos nuestra propia gloria, ni la de ningún hombre. Toda la vida — culto, trabajo, familia — debe orientarse a la gloria de Dios.</p>
+          </div>
+          <div class="sola-card" style="border-left-color: #8b3a2b;">
+            <h4><i class="fas fa-history"></i> Contexto de la Reforma</h4>
+            <p>Los reformadores insistieron en que <strong>toda la vida es culto a Dios</strong>. La música, el arte y la educación se reformaron bajo este principio. El trabajo secular fue revalorizado como servicio sagrado.</p>
+          </div>
+          <div class="callout">
+            <p><strong>Aplicación:</strong> Vivimos para mostrar la excelencia de Aquel que nos llamó de las tinieblas a su luz admirable (1 Pedro 2:9).</p>
+          </div>
+          <div class="questions-list">
+            <h5><i class="fas fa-question-circle"></i> Preguntas para debate</h5>
+            <ol>
+              <li>¿Cómo podemos distinguir entre buscar la gloria de Dios y buscar nuestra propia gloria en el ministerio?</li>
+              <li>¿Qué áreas de tu vida (trabajo, familia, tiempo libre) podrías reorientar para que glorifiquen más a Dios?</li>
+              <li>¿Cómo se ve una vida centrada en la gloria de Dios en una cultura que exalta el yo?</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+
+      <!-- CIERRE -->
+      <div class="card fade-in">
+        <div class="card-header"><div class="card-number">7</div><h2 class="card-title">Cierre: La Reforma No Ha Terminado</h2></div>
+        <div class="card-content">
+          <p>La Reforma no fue solo un evento del siglo XVI. Fue un retorno a la Palabra de Dios, y <strong>ese retorno debe ser continuo</strong>. Cada generación debe preguntarse si está sosteniendo las verdades que los reformadores recuperaron.</p>
+          <p><strong>¿Están estos mismos problemas presentes en la iglesia protestante hoy?</strong> Sí. Tristemente, los errores que llevaron a la Reforma no han desaparecido. Han tomado nuevas formas, pero siguen amenazando la pureza del evangelio.</p>
+
+          <div class="callout" style="border-left-color: #8b3a2b;">
+            <p><strong>1. Sola Scriptura — La Biblia ha sido desplazada.</strong></p>
+            <ul style="margin-left:1.5rem;">
+              <li>En muchas iglesias, la experiencia personal o la opinión cultural pesan más que la Escritura.</li>
+              <li>Se predica para agradar al público, no para exponer el texto.</li>
+              <li>Los creyentes conocen más las redes sociales que la Palabra de Dios.</li>
+            </ul>
+          </div>
+
+          <div class="callout" style="border-left-color: #8b3a2b;">
+            <p><strong>2. Solus Christus — Cristo ha sido reducido.</strong></p>
+            <ul style="margin-left:1.5rem;">
+              <li>Se presenta a Jesús como terapeuta, influencer o motivador, pero no como Salvador y Señor.</li>
+              <li>El evangelio se ha convertido en autoayuda: "Dios te quiere bendecir", sin cruz, sin arrepentimiento, sin sacrificio.</li>
+            </ul>
+          </div>
+
+          <div class="callout" style="border-left-color: #8b3a2b;">
+            <p><strong>3. Sola Gratia — La gracia se ha vuelto barata.</strong></p>
+            <ul style="margin-left:1.5rem;">
+              <li>Se enseña que Dios perdona sin necesidad de arrepentimiento.</li>
+              <li>La gracia se usa como excusa para el pecado: "Total, Dios me perdona".</li>
+            </ul>
+          </div>
+
+          <div class="callout" style="border-left-color: #8b3a2b;">
+            <p><strong>4. Sola Fide — La fe se ha confundido.</strong></p>
+            <ul style="margin-left:1.5rem;">
+              <li>Muchos confían en sus buenas obras, en su asistencia a la iglesia o en sus experiencias emocionales para sentirse salvos.</li>
+              <li>La seguridad se basa en lo que hacemos, no en lo que Cristo hizo.</li>
+            </ul>
+          </div>
+
+          <div class="callout" style="border-left-color: #8b3a2b;">
+            <p><strong>5. Soli Deo Gloria — La gloria se ha robado.</strong></p>
+            <ul style="margin-left:1.5rem;">
+              <li>Los pastores se convierten en celebridades.</li>
+              <li>Las iglesias compiten por grandes edificios, grandes plataformas, grandes cifras.</li>
+              <li>El ministerio se mide por éxito visible, no por fidelidad a la Palabra.</li>
+            </ul>
+          </div>
+
+          <div class="quote">
+            <div class="quote-text"><strong>Pregunta final para debate:</strong> Si Lutero viviera hoy, ¿qué 95 tesis clavaría en las puertas de nuestras iglesias?</div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <aside>
+      <div class="sidebar-card"><h3 style="font-family:Merriweather;">Las 5 Solas</h3>
+        <ul style="margin-left:1.2rem; font-size:0.9rem;">
+          <li><strong>Sola Scriptura</strong> — Solo la Escritura</li>
+          <li><strong>Solus Christus</strong> — Solo Cristo</li>
+          <li><strong>Sola Gratia</strong> — Solo por Gracia</li>
+          <li><strong>Sola Fide</strong> — Solo por Fe</li>
+          <li><strong>Soli Deo Gloria</strong> — Solo a Dios la Gloria</li>
+        </ul>
+        <div class="tags" style="margin-top:1rem;">
+          <span class="tag">Reforma</span> <span class="tag">Lutero</span> <span class="tag">95 Tesis</span>
+          <span class="tag">Evangelio</span> <span class="tag">Gracia</span> <span class="tag">Fe</span>
+        </div>
+      </div>
+
+      <div class="sidebar-card"><h3 style="font-family:Merriweather;">Los 5 problemas de la Reforma</h3>
+        <ol style="margin-left:1.2rem; font-size:0.9rem;">
+          <li>Venta de indulgencias</li>
+          <li>Tradición sobre la Escritura</li>
+          <li>Salvación por obras</li>
+          <li>Corrupción del sacerdocio</li>
+          <li>Ignorancia de las Escrituras</li>
+        </ol>
+      </div>
+
+      <div class="sidebar-card"><h3 style="font-family:Merriweather;">Textos clave</h3>
+        <p><strong>Juan 8:31-32</strong> — "La verdad os hará libres"</p>
+        <p><strong>2 Timoteo 3:16-17</strong> — "Toda la Escritura es inspirada"</p>
+        <p><strong>Hechos 4:12</strong> — "No hay otro nombre"</p>
+        <p><strong>Efesios 2:8-9</strong> — "Por gracia sois salvos"</p>
+        <p><strong>Romanos 3:28</strong> — "Justificado por fe"</p>
+        <p><strong>1 Corintios 10:31</strong> — "Todo para la gloria de Dios"</p>
+      </div>
+
+      <div class="sidebar-card" style="background:#f7ece8; border:1px solid #dccfc6;">
+        <h3 style="font-family:Merriweather;">Pregunta final</h3>
+        <p>Si Lutero viviera hoy, ¿qué 95 tesis clavaría en las puertas de nuestras iglesias? <strong>La Reforma no ha terminado. Cada generación debe volver a la Palabra de Dios.</strong></p>
+      </div>
+    </aside>
+  </div>
+
+  <footer class="footer">
+    <p>Iglesia Bautista de Sola — Solo Cristo Salva</p>
+    <p>“La Verdad que Nos Hace Libres” — Estudio para el Día de la Reforma</p>
+    <p>Juan 8:31-32 — Las 5 Solas</p>
+  </footer>
+</div>
+
+<script>
+  function scrollToSection(id) {
+    document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+  }
+</script>
+</body>
+</html>
